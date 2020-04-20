@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for x in *.tex; do
+  docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja uplatex ${x}
+  docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja dvipdfmx `basename ${x} .tex`.dvi
+done
